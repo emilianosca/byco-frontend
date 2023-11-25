@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Byco',
-  description: 'Byco is a platfrom that brings together cities, communities, governments, and people to create better futures.',
+  description: '',
 }
 
 export default function RootLayout({
@@ -20,3 +20,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+
