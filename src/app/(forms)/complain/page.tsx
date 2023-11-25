@@ -1,1 +1,0 @@
-// this is for the footer, to give people capability to complain about the city

@@ -1,9 +1,23 @@
-export type Pokedex = {
-    Questions: Question[];
+export type Question = {
+    id: number;
+    question:      string;
+    answersNumber?: number;
+    createdAt:     Date;
+    rank?:          number; // 1 - 10 
 }
 
-export type Question = {
-    question:      string;
-    answersNumber: number;
-    createdAt:     Date;
+export type Poll = {
+    title: string;
+    weight: number;
+    questions: Question[];
 }
+
+export type User = {
+    id?: number; //timeStamp
+    ip?: string; // Location from post user
+    typeOfDispositivo?: string; // Mobile, Desktop, Tablet
+}
+
+export type Questions = Question[];
+
+

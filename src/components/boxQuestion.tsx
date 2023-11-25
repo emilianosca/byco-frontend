@@ -1,7 +1,13 @@
-import React from 'react'
+"use client"
+
+import React, {useState} from 'react'
+import Image from 'next/image'
+import { Question } from '@/types/Questions'
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+
 
 import {
   Card,
@@ -20,48 +26,60 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export function CardWithForm() {
+import hearth from "../../public/hearth.svg"
+import iconLogo from "../../public/iconLogo.svg"
+import x from "../../public/x.svg"
+
+// typescript map with svgs and is actual svg content
+const svgs = {
+  "x": x,
+  "hearth": hearth,
+  "iconLogo": iconLogo
+}
+
+const xSvg = svgs["x"]
+const hearthSvg = svgs["hearth"]
+const iconLogoSvg = svgs["iconLogo"]
+
+
+
+export function BoxQuestion(...props: Question[]) {
+  // to handle click state of the buttons 
+
+  const [isClicked, setIsClicked] = React.useState(false)
+
+  const { question, answersNumber, createdAt } = props[0]
+
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[250px]">
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardTitle>
+          {question}
+        </CardTitle>
+        <CardDescription>  
+          {answersNumber} veces respondida
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Name of your project" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
-              <Select>
-                <SelectTrigger id="framework">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </form>
-      </CardContent>
+      {/* <CardContent>
+
+      </CardContent> */}
       <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+        <Button 
+        variant="outline"
+        onClick={() => setIsClicked(!isClicked)}
+        disabled={isClicked}
+        >
+          <Image src={xSvg} alt="x" className="w-10 h-4" />
+        </Button>
+        <Button 
+        onClick={() => setIsClicked(!isClicked)}
+        disabled={isClicked}
+        >
+          <Image src={hearthSvg} color='white' alt="hearth" className="w-10 h-4" />
+        </Button>
       </CardFooter>
     </Card>
   )
 }
 
-
-export default function BoxQuestion() {
-  return (
-    <CardWithForm />
-  )
-}
+export default BoxQuestion
