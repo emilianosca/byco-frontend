@@ -49,6 +49,7 @@ export function BoxQuestion(...props: Question[]) {
   const [isClicked, setIsClicked] = React.useState(false)
 
   const { question, answersNumber, createdAt } = props[0]
+  let createdAtFormat = createdAt.toString()
 
   return (
     <Card className="w-[250px]">
@@ -60,9 +61,11 @@ export function BoxQuestion(...props: Question[]) {
           {answersNumber} veces respondida
         </CardDescription>
       </CardHeader>
-      {/* <CardContent>
-
-      </CardContent> */}
+      <CardContent>
+        <CardDescription>
+          {createdAtFormat}
+        </CardDescription>
+      </CardContent>
       <CardFooter className="flex justify-between">
         <Button 
         variant="outline"

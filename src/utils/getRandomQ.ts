@@ -2,7 +2,9 @@
 // as an array of objects
 
 // will use dummy data for now
-import { Questions } from "@/data/questions.json";
+import data from "@/data/questions.json";
+
+const Questions = data.Questions;
 
 export function getDummyQuestions() {
   return Questions;

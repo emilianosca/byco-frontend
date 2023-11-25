@@ -1,5 +1,7 @@
 // will use dummy data for now
-import { Questions } from "@/data/questions.json";
+import data from "@/data/questions.json";
+
+const Questions = data.Questions;
 
 // get just one q from the poll
 export function getDummyQuestion(){

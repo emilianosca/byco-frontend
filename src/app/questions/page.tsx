@@ -10,8 +10,10 @@ import getDummyQuestions, { getDummyQuestion } from "@/utils/getRandomQ"
     let question = data.question
     let answersNumber = data.answersNumber
     let createdAt = data.createdAt
-    createdAt = new Date(createdAt).toLocaleDateString()
-    console.log("type of createAt", typeof createdAt )
+    // change type of created At to Date
+    const createdAtFormat = new Date(createdAt);
+    
+    console.log("type of createAt fromated", typeof createdAtFormat )
     
   return (
     <div>
@@ -19,7 +21,7 @@ import getDummyQuestions, { getDummyQuestion } from "@/utils/getRandomQ"
       <BoxQuestion 
       question={question}
       answersNumber={answersNumber}
-      createdAt={createdAt}
+      createdAt={createdAtFormat}
       />
       <pre className="text-black">{JSON.stringify(data, null, 2)}</pre>
     </div>
