@@ -1,4 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
+export const dynamic = "force-dynamic"; // defaults to force-static
+import { NextRequest, NextResponse } from "next/server";
+import data from "@/data/questions.json";
 
 export async function GET() {
   const res = await fetch(process.env.PATH_URL_BACKEND+'/api/posts', {
@@ -7,27 +9,26 @@ export async function GET() {
     },
   })
   const result = await res.json()
-  return NextResponse.json({ result })
+  const Questions = await data.Questions;
+  const randomIndex = Math.floor(Math.random() * Questions.length);
+  return NextResponse.json(Questions[randomIndex]);
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json()
-  const res = await fetch(process.env.PATH_URL_BACKEND+'/api/posts', {
-    method: 'POST',
+  const body = await request.json();
+  const res = await fetch(process.env.PATH_URL_BACKEND + "/api/posts", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
-  })
+  });
   const data = await res.json();
-  return NextResponse.json(data)
-
+  return NextResponse.json(data);
 }
-// export const dynamic = 'force-dynamic' // defaults to force-static
 
 // import data from "@/data/questions.json";
 // const Questions = data.Questions;
-
 
 // // this function returns one question from the poll
 // export async function getDummyQuestion() {

@@ -1,21 +1,21 @@
-import React from "react";
-import BoxQuestion from "@/components/boxQuestion";
-import getDummyQuestions, { getDummyQuestion } from "@/utils/getRandomQ"
+"use client"
+import React , {useState, useEffect} from "react";
 
-// export default function Questions({ params }: { params: { slug: string }  }) {
-  export default function Questions() {
-    const questions = getDummyQuestions()
-    const data = getDummyQuestion()
-    // destructuring object 
-    let question = data.question
-    let answersNumber = data.answersNumber
-    let createdAt = new Date(data.createdAt).toLocaleDateString()
-    console.log("type of createAt", typeof createdAt )
-    
+export default function Questions() {
+  const [isMounted, setIsMounted] = useState(false);
+  // This is a side effect that runs after the first render and sets the isMounted state to true
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  } 
   return (
-    <div>
-      <h1 className="text-black">¿Here is content for complains</h1>
-      <pre className="text-black">{JSON.stringify(data, null, 2)}</pre>
-    </div>
+    <>
+      <div>
+        <h1 className="text-black">Here is content for complains</h1>
+      </div>
+    </>
   );
 }

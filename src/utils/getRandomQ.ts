@@ -3,7 +3,6 @@
 
 // will use dummy data for now
 import data from "@/data/questions.json";
-
 const Questions = data.Questions;
 
 export function getDummyQuestions() {

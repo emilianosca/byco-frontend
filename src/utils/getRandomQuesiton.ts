@@ -21,6 +21,6 @@ export function getDummyQuestions() {
 function postQuestionChoosed(id: number, answer: string ){
     // answer = "yes <3" | "no x" | 
     
-
+    return 'yes'!
     // write in the database
 }

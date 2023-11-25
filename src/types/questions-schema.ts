@@ -2,7 +2,7 @@ export type Question = {
     id?: number;
     question:      string;
     answersNumber?: number;
-    createdAt:     Date;
+    createdAt:     string | Date;
     rank?:          number; // 1 - 10 
 }
 

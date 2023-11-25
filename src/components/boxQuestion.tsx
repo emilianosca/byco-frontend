@@ -1,8 +1,8 @@
 "use client"
 
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
-import { Question } from '@/types/Questions'
+import { Question } from '@/types/questions-schema'
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -44,15 +44,27 @@ const iconLogoSvg = svgs["iconLogo"]
 
 
 export function BoxQuestion(...props: Question[]) {
-  // to handle click state of the buttons 
+  
+  const [isMounted, setIsMounted] = useState(false);
 
   const [isClicked, setIsClicked] = React.useState(false)
-
+  
+  
+  // This is a side effect that runs after the first render and sets the isMounted state to true
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
+  // to handle click state of the buttons 
   const { question, answersNumber, createdAt } = props[0]
   let createdAtFormat = createdAt.toString()
 
+
+  if (!isMounted) {
+    return null;
+  }
   return (
-    <Card className="w-[250px]">
+    <Card className="w-[250px]" suppressHydrationWarning >
       <CardHeader>
         <CardTitle>
           {question}
@@ -66,15 +78,17 @@ export function BoxQuestion(...props: Question[]) {
           {createdAtFormat}
         </CardDescription>
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="flex justify-between" >
         <Button 
+        asChild
         variant="outline"
         onClick={() => setIsClicked(!isClicked)}
         disabled={isClicked}
         >
           <Image src={xSvg} alt="x" className="w-10 h-4" />
         </Button>
-        <Button 
+        <Button
+         asChild
         onClick={() => setIsClicked(!isClicked)}
         disabled={isClicked}
         >
