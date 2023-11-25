@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+import '@/app/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Byco',
-  description: '',
+  title: 'Questions',
+  description: 'Byco is a platfrom that brings together cities, communities, governments, and people to create better futures.',
 }
 
 export default function RootLayout({
@@ -20,5 +20,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
