@@ -80,7 +80,6 @@ export function BoxQuestion(...props: Question[]) {
       </CardContent>
       <CardFooter className="flex justify-between" >
         <Button 
-        asChild
         variant="outline"
         onClick={() => setIsClicked(!isClicked)}
         disabled={isClicked}
@@ -88,7 +87,6 @@ export function BoxQuestion(...props: Question[]) {
           <Image src={xSvg} alt="x" className="w-10 h-4" />
         </Button>
         <Button
-         asChild
         onClick={() => setIsClicked(!isClicked)}
         disabled={isClicked}
         >
